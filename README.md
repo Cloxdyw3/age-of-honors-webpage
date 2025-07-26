@@ -61,4 +61,9 @@ Feel free to open issues or pull requests.
 
 ---
 
-TunaStudio & Age
+TunaStudio & Age of Honor
+
+---
+
+By: Cloxdy
+Discord: doruhk
