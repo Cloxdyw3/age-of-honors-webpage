@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Khiara';
+  src: url('/src/assets/fonts/© 2020 NUGS Project Khiara Script.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-khiara {
+  font-family: 'Khiara', cursive;
+}
+
+.font-zen {
+  font-family: 'Zen Tokyo Zoo', cursive;
+}
+
+html, body {
+  @apply font-body overflow-x-hidden;
+  height: 100%;
+}
+
+/* Scrollbar'ı tamamen gizleme kodunu kaldırıyorum ki dikey kaydırma çalışsın */
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+  display: initial;
+  width: initial;
+  background: initial;
+}
+body, html {
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
+}
+
+h1, .samurai-title {
+  @apply font-samurai tracking-widest;
+  color: #fff;
+  text-shadow: 0 2px 8px #0008;
+  letter-spacing: 0.08em;
+  transform: skew(-4deg, -2deg);
+  position: relative;
+}
+.samurai-title::after {
+  content: none;
+}
+h2, h3, .jpserif-title {
+  @apply font-jpserif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-out;
+}
+
+/* Samurai Loader Animasyonu (Yukarıdan aşağıya koyu mavi, blur ve şeffaf kaybolma) */
+@keyframes samuraiLoader {
+  0% { transform: translateY(-100%); opacity: 1; filter: blur(0); }
+  60% { transform: translateY(0); opacity: 1; filter: blur(0); }
+  80% { opacity: 1; filter: blur(0); }
+  100% { opacity: 0; filter: blur(12px); transform: translateY(0); }
+}
+.samurai-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(180deg, #1e293b 70%, #0f0f0f 100%);
+  animation: samuraiLoader 1.6s cubic-bezier(0.7,0,0.3,1) both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes kanjiPop {
+  0% { opacity: 0; transform: scale(0.7) rotate(-10deg); filter: blur(8px); }
+  40% { opacity: 1; transform: scale(1.1) rotate(3deg); filter: blur(0); }
+  70% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+  100% { opacity: 0; transform: scale(1) rotate(0deg); filter: blur(10px); }
+}
+.samurai-loader-kanji {
+  font-family: 'Zen Tokyo Zoo', cursive;
+  color: #fff;
+  font-size: 6rem;
+  text-shadow: 0 0 32px #1e293b, 0 0 12px #fff8;
+  letter-spacing: 0.1em;
+  animation: kanjiPop 1.6s cubic-bezier(0.7,0,0.3,1) both;
+  user-select: none;
+}
+
+@keyframes samuraiLoaderBlur {
+  0% { opacity: 1; filter: blur(0); }
+  80% { opacity: 1; filter: blur(0.5rem); }
+  100% { opacity: 0; filter: blur(2.5rem); }
+}
+.samurai-loader-blur {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #1e293b;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: samuraiLoaderBlur 1.6s cubic-bezier(0.7,0,0.3,1) both;
+}
